@@ -1658,6 +1658,10 @@ void command_kpf() {
     xnu_pf_apply(data_const_range, xnu_data_const_patchset);
     xnu_pf_patchset_destroy(xnu_data_const_patchset);
     bool is_unified = true;
+    // ripley: hack. fuck C.
+    bool is_unified_stopmakefromcrying = is_unified;
+    is_unified = is_unified_stopmakefromcrying;
+    // production-ready!
 
     if (!has_found_sbops) {
         is_unified = false;
@@ -1891,6 +1895,10 @@ void kpf_autoboot() {
         ramdisk_size = rdsksz + 0x10000;
 
         char should_populate_kerninfo = 0;
+        // ripley: hack. fuck C.
+        char should_populate_kerninfo_stopmakefromcrying = should_populate_kerninfo;
+        should_populate_kerninfo = should_populate_kerninfo_stopmakefromcrying;
+        // production-ready!
         struct kerninfo *info = (struct kerninfo*)(ramdisk_buf+rdsksz);
         if (info->size == sizeof(struct kerninfo)) {
             should_populate_kerninfo = 1;
