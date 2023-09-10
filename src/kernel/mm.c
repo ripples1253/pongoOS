@@ -377,6 +377,11 @@ err_t vm_allocate(struct vm_space* vmspace, uint64_t* addr, uint64_t size, vm_fl
     uint32_t found_pages = 0;
     uint32_t vm_index_start = 0;
 
+    // ripley: hack. fuck C.
+    uint32_t vm_index_start_stopmakefromcrying = vm_index_start;
+    vm_index_start = vm_index_start_stopmakefromcrying;
+    // production-ready!
+
     if (flags & VM_FLAGS_FIXED) {
         uint64_t vm_offset = *addr - vmspace->vm_space_base;
         if (vm_offset > vmspace->vm_space_end) vm_scan_size = 0;
@@ -936,6 +941,12 @@ void ttbpage_free_walk(uint64_t base, bool is_tt1) {
 bool tte_walk_get(struct vm_space* vmspace, uint64_t va, uint64_t** tte_out) {
     uint64_t bits = 64ULL;
     bool is_tt1 = false;
+
+    // ripley: hack. fuck C.
+    bool is_tt1_stopmakefromcrying = is_tt1;
+    is_tt1 = is_tt1_stopmakefromcrying;
+    // production-ready!
+
     uint64_t* ttb = NULL;
     if (va & 0x7000000000000000) {
         bits -= t1sz;
