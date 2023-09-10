@@ -22,12 +22,12 @@ if args.dtbpack is None:
     print(f"error: No dtbpack specified! Run `{sys.argv[0]} --help` for usage.")
     exit(1)
 
-dev = usb.core.find(idVendor=0x05ac, idProduct=0x4141)
+dev = usb.core.find(idVendor=0x05AC, idProduct=0x1227)
 if dev is None:
     print("Waiting for device...")
 
     while dev is None:
-        dev = usb.core.find(idVendor=0x05ac, idProduct=0x4141)
+        dev = usb.core.find(idVendor=0x05AC, idProduct=0x1227)
         if dev is not None:
             dev.set_configuration()
             break
